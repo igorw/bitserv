@@ -19,6 +19,9 @@ $repo = Grit::Repo.new($config['repo_path'])
 
 def parse_page(page)
   blob = $repo.head.commit.tree/page
+  if blob.nil?
+    raise Sinatra::NotFound
+  end
   BlueCloth.new(blob.data).to_html
 end
 
@@ -26,6 +29,11 @@ def render_page(page)
   @title = page
   @content = parse_page(page)
   haml :page
+end
+
+not_found do
+  @title = 'page not found'
+  haml :not_found
 end
 
 get '/' do
