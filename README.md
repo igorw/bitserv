@@ -6,13 +6,11 @@ serves git's bits using sinatra.
 
 * ruby 1.9
 * bundler
-* sinatra
-* grit
-* bluecloth
-* haml
 
 ## running
 
+    cp example.application.yml application.yml
+    # adjust application.yml
     bundle install
     rackup
     open http://localhost:9292

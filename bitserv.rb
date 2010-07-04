@@ -6,11 +6,11 @@ require 'bluecloth'
 require 'haml'
 require 'sass'
 
-repo_path = '.'
-
 set :haml, {attr_wrapper: '"'}
 
-repo = Grit::Repo.new(repo_path)
+config = YAML.load_file('application.yml')
+
+repo = Grit::Repo.new(config['repo_path'])
 
 get '/:page' do
   page = params[:page]
