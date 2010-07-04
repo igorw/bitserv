@@ -23,6 +23,8 @@ get '/' do
   render_page 'index'
 end
 
-get '/:page' do
-  render_page params[:page]
+get '/*' do
+  # splat is an array
+  page = params[:splat][0]
+  render_page page
 end
