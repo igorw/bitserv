@@ -1,0 +1,10 @@
+%h1 pages
+-p = Proc.new do |tree, block, parents|
+  - parents << tree.name
+  %ul
+    - for file in tree.contents
+      %li
+        %a{href: parents.join('/') + '/' + file.name}= h(file.name)
+        - if file.class == Grit::Tree
+          - block.call(file, block, parents)
+- p.call(@tree, p, [])

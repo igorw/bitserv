@@ -40,14 +40,18 @@ get '/' do
   render_page 'index'
 end
 
+get '/pages' do
+  @title = "pages"
+  @tree = $repo.head.commit.tree
+  haml :pages
+end
+
 # history diff
 get %r{/h/(.*)/([0-9a-f]{40})} do |page, id|
   @title = "history diff of #{page}"
   @page = page
   @commit = $repo.commit(id)
   @diffs = @commit.diffs
-  
-  puts @diffs
   
   haml :history_diff
 end
