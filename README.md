@@ -8,6 +8,7 @@ serves git's bits using sinatra.
 * sinatra
 * grit
 * bluecloth
+* haml
 
 ## license
 
