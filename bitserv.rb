@@ -6,16 +6,24 @@ require 'bluecloth'
 require 'haml'
 require 'sass'
 
+helpers do
+  include Rack::Utils
+  alias_method :h, :escape_html
+end
+
 set :haml, {attr_wrapper: '"'}
 
-config = YAML.load_file('application.yml')
+$config = YAML.load_file('application.yml')
+$repo = Grit::Repo.new($config['repo_path'])
 
-$repo = Grit::Repo.new(config['repo_path'])
+def parse_page(page)
+  blob = $repo.heads.first.commit.tree/page
+  BlueCloth.new(blob.data).to_html
+end
 
 def render_page(page)
-  blob = $repo.heads.first.commit.tree/page
-  @content = BlueCloth.new(blob.data).to_html
-  
+  @title = page
+  @content = parse_page(page)
   haml :page
 end
 

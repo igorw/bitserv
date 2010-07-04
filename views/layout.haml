@@ -2,7 +2,9 @@
 %html
   %head
     %meta{"http-equiv" => "Content-Type", "content" => "text/html; charset=utf-8"}
-    %title bitserv
-    %link{rel: "stylesheet", href: "/stylesheets/application.css", type: "text/css", media: "all"}
+    %title= "#{h(@title)} - #{h($config['site_name'])}"
+    %link{rel: "stylesheet", href: "/stylesheets/application.css", type: "text/css"}
   %body
-    = yield
+    #header= parse_page('header')
+    #content= yield
+    #footer= parse_page('footer')
