@@ -6,3 +6,5 @@
       = "by #{h(commit.author)}: "
       = h(commit.short_message)
       %a{href: "/h/#{@page}/#{commit.id}"} [diff]
+%p
+  %a{href: "/#{@page}"} back to page

@@ -1,3 +1,7 @@
-%h1= "history diff of #{h(@page)}"
+%h1= "change of #{h(@page)}"
+%p= @commit.date.strftime('%Y-%m-%d %H:%M:%S') + " by #{h(@commit.author)}"
+%p= h(@commit.short_message)
 - for diff in @diffs
   ~ CodeRay.scan(diff.diff, :diff).html.div
+%p
+  %a{href: "/h/#{@page}"} back to history

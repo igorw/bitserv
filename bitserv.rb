@@ -69,6 +69,6 @@ end
 
 # page
 get '/*' do
-  page = params[:splat].first
-  render_page page
+  @page = params[:splat].first
+  render_page @page
 end
