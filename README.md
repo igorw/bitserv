@@ -17,9 +17,9 @@ serves git's bits using sinatra.
 
 ## special pages
 
-* **index**: is displayed when navigating to /
-* **header**: is displayed at the top of the page
-* **footer**: is displayed at the bottom of the page
+* **index** is displayed when navigating to /
+* **header** is displayed at the top of the page
+* **footer** is displayed at the bottom of the page
 
 ## license
 
