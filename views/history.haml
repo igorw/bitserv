@@ -1,0 +1,8 @@
+%h1= "history of #{h(@page)}"
+%ul
+  - for commit in @commits
+    %li
+      = commit.date.strftime('%Y-%m-%d %H:%M:%S')
+      = "by #{h(commit.author)}: "
+      = h(commit.short_message)
+      %a{href: "/h/#{@page}/#{commit.id}"} [diff]

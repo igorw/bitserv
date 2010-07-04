@@ -1,0 +1,3 @@
+%h1= "history diff of #{h(@page)}"
+- for diff in @diffs
+  ~ CodeRay.scan(diff.diff, :diff).html.div

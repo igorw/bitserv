@@ -1,4 +1,5 @@
 gem 'sinatra'
-gem 'grit'
+gem 'grit', git: 'http://github.com/evil3/grit.git', branch: 'issue5'
 gem 'bluecloth'
 gem 'haml'
+gem 'coderay'
