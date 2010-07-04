@@ -10,12 +10,19 @@ set :haml, {attr_wrapper: '"'}
 
 config = YAML.load_file('application.yml')
 
-repo = Grit::Repo.new(config['repo_path'])
+@@repo = Grit::Repo.new(config['repo_path'])
 
-get '/:page' do
-  page = params[:page]
-  blob = repo.heads.first.commit.tree/(page + '.md')
+def render_page(page)
+  blob = @@repo.heads.first.commit.tree/page
   @body = BlueCloth.new(blob.data).to_html
   
-  haml :index
+  haml :page
+end
+
+get '/' do
+  render_page 'index'
+end
+
+get '/:page' do
+  render_page params[:page]
 end
