@@ -14,7 +14,7 @@ config = YAML.load_file('application.yml')
 
 def render_page(page)
   blob = @@repo.heads.first.commit.tree/page
-  @body = BlueCloth.new(blob.data).to_html
+  @content = BlueCloth.new(blob.data).to_html
   
   haml :page
 end
