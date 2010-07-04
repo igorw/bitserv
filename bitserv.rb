@@ -4,6 +4,7 @@ require 'sinatra'
 require 'grit'
 require 'bluecloth'
 require 'haml'
+require 'sass'
 
 repo_path = '.'
 

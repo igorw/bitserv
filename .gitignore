@@ -1,2 +1,4 @@
 .bundle
 Gemfile.lock
+.sass-cache
+public/stylesheets/application.css
