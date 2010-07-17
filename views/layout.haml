@@ -5,6 +5,6 @@
     %title= "#{h(@title)} - #{h($config['site_name'])}"
     %link{rel: "stylesheet", href: "/stylesheets/application.css", type: "text/css"}
   %body
-    #header= parse_page('header')
+    #header= parse_page('header', true)
     #content= yield
-    #footer= parse_page('footer')
+    #footer= parse_page('footer', true)

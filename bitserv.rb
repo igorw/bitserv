@@ -17,9 +17,12 @@ set :haml, {attr_wrapper: '"'}
 $config = YAML.load_file('application.yml')
 $repo = Grit::Repo.new($config['repo_path'])
 
-def parse_page(page)
+def parse_page(page, ignore_missing = false)
   blob = $repo.head.commit.tree/page
   if blob.nil?
+    if ignore_missing
+      return
+    end
     raise Sinatra::NotFound
   end
   output = BlueCloth.new(blob.data).to_html
