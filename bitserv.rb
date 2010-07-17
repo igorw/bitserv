@@ -52,7 +52,9 @@ get %r{/h/(.*)/([0-9a-f]{40})} do |page, id|
   @title = "history diff of #{page}"
   @page = page
   @commit = $repo.commit(id)
-  @diffs = @commit.diffs
+  @diffs = @commit.diffs.select do |diff|
+    diff.a_path == page || diff.b_path == page
+  end
   
   haml :history_diff
 end
