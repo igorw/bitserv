@@ -22,7 +22,11 @@ def parse_page(page)
   if blob.nil?
     raise Sinatra::NotFound
   end
-  BlueCloth.new(blob.data).to_html
+  output = BlueCloth.new(blob.data).to_html
+  output.gsub!(/\[([a-zA-Z0-9_\/]+)\]/) do
+    '<a href="/' + $1 + '">' + $1 + '</a>'
+  end
+  output
 end
 
 def render_page(page)
@@ -62,6 +66,11 @@ get '/h/*' do
   @commits = $repo.log($repo.head.commit.id, page)
   
   haml :history
+end
+
+# index redirect
+get '/index' do
+  redirect '/'
 end
 
 # index page
