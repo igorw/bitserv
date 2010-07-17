@@ -26,6 +26,7 @@ def parse_page(page)
 end
 
 def render_page(page)
+  @page = page
   @title = page
   @content = parse_page(page)
   haml :page
@@ -34,10 +35,6 @@ end
 not_found do
   @title = 'page not found'
   haml :not_found
-end
-
-get '/' do
-  render_page 'index'
 end
 
 get '/pages' do
@@ -67,8 +64,13 @@ get '/h/*' do
   haml :history
 end
 
+# index page
+get '/' do
+  render_page 'index'
+end
+
 # page
 get '/*' do
-  @page = params[:splat].first
-  render_page @page
+  page = params[:splat].first
+  render_page page
 end
