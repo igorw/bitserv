@@ -15,6 +15,15 @@ serves git's bits using sinatra.
     rackup
     open http://localhost:9292
 
+## set up wiki repo
+
+    mkdir pages
+    cd pages
+    git init
+    echo '# front page' > index
+    git add .
+    git commit -m 'hello front page'
+
 ## special pages
 
 * **index** is displayed when navigating to /
