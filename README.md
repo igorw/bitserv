@@ -12,7 +12,7 @@ serves git's bits using sinatra.
     cp example.application.yml application.yml
     # adjust application.yml
     bundle install
-    rackup
+    bundle exec rackup
     open http://localhost:9292
 
 ## set up wiki repo
