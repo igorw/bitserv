@@ -1,5 +1,3 @@
-require 'bundler'
-Bundler.setup
 require 'sinatra'
 require 'grit'
 require 'bluecloth'

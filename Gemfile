@@ -1,5 +1,7 @@
+source 'https://rubygems.org'
+
 gem 'sinatra'
-gem 'grit', git: 'http://github.com/evil3/grit.git', branch: 'issue5'
+gem 'grit'
 gem 'bluecloth'
 gem 'haml'
 gem 'coderay'
